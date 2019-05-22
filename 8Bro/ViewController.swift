@@ -9,12 +9,27 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    var randomBroInt: Int = 0
+    @IBOutlet weak var BroBall: UIImageView!
+    let BroBallArray = ["ball1","ball2","ball3","ball4","ball5"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        changeBallType()
     }
 
 
+    @IBAction func Asking(_ sender: UIButton) {
+        changeBallType()
+    }
+    
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        changeBallType()
+    }
+    
+    func changeBallType () {
+        randomBroInt = Int.random(in:0...4)
+        
+        BroBall.image = UIImage(named: BroBallArray[randomBroInt])
+    }
 }
 
